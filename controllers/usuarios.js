@@ -28,7 +28,7 @@ const usuariosPost = async(req=request, res=response) => {
 
 const usuariosPut = async(req=request, res=response) => {
     const { id } = req.params;
-    const { password, google, ...rest } = req.body;
+    const { _id, password, google, correo, ...rest } = req.body;
 
     // TODO: Validar contra BD
     if(password) {
@@ -38,7 +38,7 @@ const usuariosPut = async(req=request, res=response) => {
     }
     const usuario = await Usuario.findByIdAndUpdate(id, rest);
 
-    res.json({ usuario });
+    res.json(usuario);
 };
 
 const usuariosPatch = (req, res=response) => {
